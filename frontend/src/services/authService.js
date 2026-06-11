@@ -1,5 +1,4 @@
 const API_URL = "https://devconnect-mp2n.onrender.com/api/auth";
-
 export const loginUser = async (email, password) => {
   const response = await fetch(`${API_URL}/login`, {
     method: "POST",
