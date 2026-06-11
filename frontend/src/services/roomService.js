@@ -1,6 +1,6 @@
 export const getRooms = async () => {
   const response = await fetch(
-    "http://localhost:5000/api/rooms"
+    "https://devconnect-mp2n.onrender.com/api/rooms"
   );
 
   const data = await response.json();
@@ -12,7 +12,7 @@ export const createRoom = async (name) => {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    "http://localhost:5000/api/rooms",
+    "https://devconnect-mp2n.onrender.com/api/rooms",
     {
       method: "POST",
       headers: {

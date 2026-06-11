@@ -1,6 +1,6 @@
 export const getMessages = async (roomId) => {
   const response = await fetch(
-    `http://localhost:5000/api/messages/${roomId}`
+    `https://devconnect-mp2n.onrender.com/api/messages/${roomId}`
   );
 
   const data = await response.json();
