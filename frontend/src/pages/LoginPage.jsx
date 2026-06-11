@@ -7,18 +7,23 @@ function LoginPage() {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    try {
-      const data = await loginUser(email, password);
+  try {
+    const data = await loginUser(email, password);
 
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userId", data.userId);
-
-      window.location.reload();
-    } catch (error) {
-      alert("Invalid credentials");
-      console.error(error);
+    if (!data.success) {
+      alert("Invalid email or password");
+      return;
     }
-  };
+
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("userId", data.userId);
+
+    window.location.reload();
+  } catch (error) {
+    console.error(error);
+    alert("Login failed");
+  }
+};
 
   return (
     <div className="login-page">

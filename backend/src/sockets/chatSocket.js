@@ -28,13 +28,20 @@ const setupSocket = (io) => {
   try {
     console.log("Message Received:", data);
     
-await Message.create({
+const newMessage = await Message.create({
   room: data.room,
   sender: data.sender,
   content: data.content,
 });
 
-    io.to(data.room).emit("receiveMessage", data);
+const populatedMessage = await Message.findById(
+  newMessage._id
+).populate("sender", "name");
+
+io.to(data.room).emit(
+  "receiveMessage",
+  populatedMessage
+);
 
   } catch (error) {
     console.log(error.message);
